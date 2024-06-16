@@ -1,4 +1,8 @@
 # EMOPIA_cls
+This is a fork of the original Emopia classifier repository [available here](https://github.com/seungheondoh/EMOPIA_cls)
+Some minor changes were made in order to use the classifier as a separate python package in google colabs, (not sure if that was the best way but that's what i tried)
+
+## Below there's the original README.md
 
 This is the official repository of **EMOPIA: A Multi-Modal Pop Piano Dataset For Emotion Recognition and Emotion-based Music Generation**. The paper has been accepted by International Society for Music Information Retrieval Conference 2021. This repository is the **Emotion Recognition** part (Audio and MIDI domain).
 

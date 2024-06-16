@@ -7,10 +7,10 @@ from argparse import ArgumentParser, Namespace
 import torch
 import torchaudio
 from omegaconf import DictConfig, OmegaConf
-from audio_cls.src.model.net import ShortChunkCNN_Res
-from midi_cls.src.model.net import SAN
-from midi_cls.midi_helper.remi.midi2event import analyzer, corpus, event
-from midi_cls.midi_helper.magenta.processor import encode_midi
+# from audio_cls.src.model.net import ShortChunkCNN_Res
+# from midi_cls.src.model.net import SAN
+# from midi_cls.midi_helper.remi.midi2event import analyzer, corpus, event
+# from midi_cls.midi_helper.magenta.processor import encode_midi
 
 path_data_root = "./midi_cls/midi_helper/remi/"
 path_dictionary = os.path.join(path_data_root, 'dictionary.pkl')
