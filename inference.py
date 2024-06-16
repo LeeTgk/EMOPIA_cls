@@ -7,12 +7,12 @@ from argparse import ArgumentParser, Namespace
 import torch
 import torchaudio
 from omegaconf import DictConfig, OmegaConf
-# from audio_cls.src.model.net import ShortChunkCNN_Res
-# from midi_cls.src.model.net import SAN
-# from midi_cls.midi_helper.remi.midi2event import analyzer, corpus, event
-# from midi_cls.midi_helper.magenta.processor import encode_midi
+from EMOPIA_cls.audio_cls.src.model.net import ShortChunkCNN_Res
+from EMOPIA_cls.midi_cls.src.model.net import SAN
+from EMOPIA_cls.midi_cls.midi_helper.remi.midi2event import analyzer, corpus, event
+from EMOPIA_cls.midi_cls.midi_helper.magenta.processor import encode_midi
 
-path_data_root = "./midi_cls/midi_helper/remi/"
+path_data_root = "./EMOPIA_cls/midi_cls/midi_helper/remi/"
 path_dictionary = os.path.join(path_data_root, 'dictionary.pkl')
 midi_dictionary = pickle.load(open(path_dictionary, "rb"))
 event_to_int = midi_dictionary[0]
@@ -52,8 +52,8 @@ def predict(args) -> None:
     device = args.cuda if args.cuda and torch.cuda.is_available() else 'cpu'
     if args.cuda:
         print('GPU name: ', torch.cuda.get_device_name(device=args.cuda))
-    config_path = Path("best_weight", args.types, args.task, "hparams.yaml")
-    checkpoint_path = Path("best_weight", args.types, args.task, "best.ckpt")
+    config_path = Path("drive","MyDrive","best_weight", args.types, args.task, "hparams.yaml")
+    checkpoint_path = Path("drive/MyDrive","best_weight", args.types, args.task, "best.ckpt")
     config = OmegaConf.load(config_path)
     label_list = list(config.task.labels)
     if args.types == "wav":
@@ -107,8 +107,8 @@ def predict(args) -> None:
     pred_value = prediction.squeeze(0).detach().cpu().numpy()
     print("========")
     print(args.file_path, " is emotion", pred_label)
-    print("Inference values: ", pred_value)
-
+    #print("Inference values: ", pred_value)
+    
     return pred_label, pred_value
 
 if __name__ == "__main__":
