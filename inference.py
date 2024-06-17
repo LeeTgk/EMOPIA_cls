@@ -50,8 +50,8 @@ def magenta_extractor(midi_path):
 
 def predict(args) -> None:
     device = args.cuda if args.cuda and torch.cuda.is_available() else 'cpu'
-    if args.cuda:
-        print('GPU name: ', torch.cuda.get_device_name(device=args.cuda))
+    #if args.cuda:
+        #print('GPU name: ', torch.cuda.get_device_name(device=args.cuda))
     config_path = Path("drive","MyDrive","best_weight", args.types, args.task, "hparams.yaml")
     checkpoint_path = Path("drive/MyDrive","best_weight", args.types, args.task, "best.ckpt")
     config = OmegaConf.load(config_path)
@@ -105,10 +105,10 @@ def predict(args) -> None:
     
     pred_label = label_list[prediction.squeeze(0).max(0)[1].detach().cpu().numpy()]
     pred_value = prediction.squeeze(0).detach().cpu().numpy()
-    print("========")
-    print(args.file_path, " is emotion", pred_label)
+    #print("========")
+    #print(args.file_path, " is emotion", pred_label)
     #print("Inference values: ", pred_value)
-    
+
     return pred_label, pred_value
 
 if __name__ == "__main__":
