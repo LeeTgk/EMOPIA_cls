@@ -26,9 +26,9 @@ MIN_BPM = 40
 MIN_VELOCITY = 40
 NOTE_SORTING = 1 #  0: ascending / 1: descending
 
-DEFAULT_VELOCITY_BINS = np.linspace(0,  128, 64+1, dtype=np.int)
-DEFAULT_BPM_BINS      = np.linspace(32, 224, 64+1, dtype=np.int)
-DEFAULT_SHIFT_BINS    = np.linspace(-60, 60, 60+1, dtype=np.int)
+DEFAULT_VELOCITY_BINS = np.linspace(0,  128, 64+1, dtype=np.int32)
+DEFAULT_BPM_BINS      = np.linspace(32, 224, 64+1, dtype=np.int32)
+DEFAULT_SHIFT_BINS    = np.linspace(-60, 60, 60+1, dtype=np.int32)
 DEFAULT_DURATION_BINS = np.arange(
         BEAT_RESOL/8, BEAT_RESOL*8+1, BEAT_RESOL/8)
 
