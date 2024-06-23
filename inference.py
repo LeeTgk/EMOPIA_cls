@@ -66,7 +66,7 @@ def predict(args) -> None:
                 n_channels = config.hparams.n_channels,
                 n_class = config.task.n_class
         )
-        state_dict = torch.load(checkpoint_path, map_location=torch.device(args.cuda))
+        state_dict = torch.load(checkpoint_path, map_location=torch.device(device))
         new_state_map = {model_key: model_key.split("model.")[1] for model_key in state_dict.get("state_dict").keys()}
         new_state_dict = {new_state_map[key]: value for (key, value) in state_dict.get("state_dict").items() if key in new_state_map.keys()}
         model.load_state_dict(new_state_dict)
@@ -78,7 +78,7 @@ def predict(args) -> None:
             lstm_hidden_dim= config.hparams.lstm_hidden_dim, 
             embedding_size= config.hparams.embedding_size, 
             r= config.hparams.r)
-        state_dict = torch.load(checkpoint_path, map_location=torch.device(args.cuda))
+        state_dict = torch.load(checkpoint_path, map_location=torch.device(device))
         new_state_map = {model_key: model_key.split("model.")[1] for model_key in state_dict.get("state_dict").keys()}
         new_state_dict = {new_state_map[key]: value for (key, value) in state_dict.get("state_dict").items() if key in new_state_map.keys()}
         model.load_state_dict(new_state_dict)
